@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :subject_streams
+
   resources :registers
 
   # static pages

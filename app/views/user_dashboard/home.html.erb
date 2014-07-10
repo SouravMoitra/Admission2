@@ -88,6 +88,16 @@
      <b>Year of passing </b> <%= @user.academic.hs_year_pass %><br>
      <b>Board </b> <%= @user.academic.hs_board %><br>
      <b>Marks Percentage </b> <%= @user.academic.hs_marks_percent %><br>
+     <b><%= @user.academic.sub1 %></b> <%= @user.academic.sub1_marks %><br>
+     <b><%= @user.academic.sub2 %></b> <%= @user.academic.sub2_marks %><br>
+     <b><%= @user.academic.sub3 %></b> <%= @user.academic.sub3_marks %><br>
+     <b><%= @user.academic.sub4 %></b> <%= @user.academic.sub4_marks %><br>
+     <b><%= @user.academic.sub5 %></b> <%= @user.academic.sub5_marks %><br>
+     <b><%= @user.academic.sub6 %></b> <%= @user.academic.sub6_marks %><br>
+     <b><%= @user.academic.sub7 %></b> <%= @user.academic.sub7_marks %><br>
+     <b><%= @user.academic.sub8 %></b> <%= @user.academic.sub8_marks %><br>
+     <b><%= @user.academic.sub9 %></b> <%= @user.academic.sub9_marks %><br>
+     <b><%= @user.academic.sub10 %></b> <%= @user.academic.sub10_marks %><br>
      <% else %>
        <% begin %>
        <h4>Fill up your academic details</h4>
@@ -134,6 +144,71 @@
                   <%= f.label :hs_marks_percent  %><br/>
                   <%= f.number_field :hs_marks_percent %>
           </p>
+          <p>
+                  <%= f.label "Stream" %>
+                  <%= select("academic", "subject_streams_id", SubjectStream.all.collect {|c| [c.subject_stream, c.id]}) %>
+
+          </p>
+          <p>
+                  <%= f.label "Subject 1"   %><br>
+                  <%= f.text_field :sub1 , class: "sub-input" %><br>
+                  <%= f.label "Subject 1 Marks"   %><br>
+                  <%= f.text_field :sub1_marks , class: "sub-input" %><br>
+          </p>
+          <p>
+                  <%= f.label "Subject 2"   %><br>
+                  <%= f.text_field :sub2 , class: "sub-input" %><br>
+                  <%= f.label "Subject 2 Marks"   %><br>
+                  <%= f.text_field :sub2_marks , class: "sub-input" %><br>
+          </p>
+          <p>
+                  <%= f.label "Subject 3"   %><br>
+                  <%= f.text_field :sub3 , class: "sub-input" %><br>
+                  <%= f.label "Subject 3 Marks"   %><br>
+                  <%= f.text_field :sub3_marks , class: "sub-input" %><br>
+          </p>
+          <p>
+                  <%= f.label "Subject 4"   %><br>
+                  <%= f.text_field :sub4 , class: "sub-input" %><br>
+                  <%= f.label "Subject 4 Marks"   %><br>
+                  <%= f.text_field :sub4_marks , class: "sub-input" %><br>
+          </p>
+          <p>
+                  <%= f.label "Subject 5"   %><br>
+                  <%= f.text_field :sub5 , class: "sub-input" %><br>
+                  <%= f.label "Subject 5 Marks"   %><br>
+                  <%= f.text_field :sub5_marks , class: "sub-input" %><br>
+          </p>
+          <p>
+                  <%= f.label "Subject 6"   %><br>
+                  <%= f.text_field :sub6 , class: "sub-input" %><br>
+                  <%= f.label "Subject 6 Marks"   %><br>
+                  <%= f.text_field :sub6_marks , class: "sub-input" %><br>
+          </p>
+          <p>
+                  <%= f.label "Subject 7"   %><br>
+                  <%= f.text_field :sub7 , class: "sub-input" %><br>
+                  <%= f.label "Subject 7 Marks"   %><br>
+                  <%= f.text_field :sub7_marks , class: "sub-input" %><br>
+          </p>
+          <p>
+                  <%= f.label "Subject 8"   %><br>
+                  <%= f.text_field :sub8 , class: "sub-input" %><br>
+                  <%= f.label "Subject 8 Marks"   %><br>
+                  <%= f.text_field :sub8_marks , class: "sub-input" %><br>
+          </p>
+          <p>
+                  <%= f.label "Subject 9"   %><br>
+                  <%= f.text_field :sub9 , class: "sub-input" %><br>
+                  <%= f.label "Subject 9 Marks"   %><br>
+                  <%= f.text_field :sub9_marks , class: "sub-input" %><br>
+          </p>
+          <p>
+                  <%= f.label "Subject 10"   %><br>
+                  <%= f.text_field :sub10 , class: "sub-input" %><br>
+                  <%= f.label "Subject 10 Marks"   %><br>
+                  <%= f.text_field :sub10_marks , class: "sub-input" %><br>
+          </p>
 
           <p><%= f.submit "Submit", data: {confirm: "Are you sure information once submitted cant be modified ?"} %></p>
         <% end %>
@@ -150,7 +225,7 @@
         <% else %>
           <h4>Click on the subject you like opt</h4>
            <% @streams.each do |s| %>
-            <% if @user.academic &&  @user.personal &&
+            <% if @user.academic &&  @user.personal && @user.academic.subject_streams_id.to_i == s.subject_stream_id &&
               @user.academic.hs_marks_percent >= Cutoff.find_by(category_id: @user.personal.category_id, stream_id: s.id).cutoff_marks %>
               <%= form_for([@user, Application.new]) do |f| %>
                   <%= f.hidden_field :user_id, :value => @user.id %>

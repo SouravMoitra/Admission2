@@ -11,12 +11,13 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :stream_id %><br>
-    <%= f.number_field :stream_id %>
+    <%= f.label "Stream" %><br>
+    <%= select("cutoff", "stream_id", Stream.all.collect {|c| [c.stream, c.id]}) %>
+
   </div>
   <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.number_field :category_id %>
+    <%= f.label "Category" %><br>
+    <%= select("cutoff", "category_id", Category.all.collect {|c| [c.category, c.id]}) %>
   </div>
   <div class="field">
     <%= f.label :cutoff_marks %><br>

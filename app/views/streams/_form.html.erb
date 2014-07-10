@@ -15,6 +15,10 @@
     <%= f.text_field :stream %>
   </div>
   <div class="field">
+    <%= f.label :subject_stream_id %><br>
+    <%= select("stream", "subject_stream_id", SubjectStream.all.collect {|c| [c.subject_stream, c.id]}) %>
+  </div>
+  <div class="field">
     <%= f.label :seats %><br>
     <%= f.number_field :seats %>
   </div>

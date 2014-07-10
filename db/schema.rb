@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709142401) do
+ActiveRecord::Schema.define(version: 20140710195406) do
 
   create_table "academics", force: true do |t|
     t.integer  "user_id"
@@ -26,6 +26,27 @@ ActiveRecord::Schema.define(version: 20140709142401) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "calculated_marks"
+    t.string   "sub1"
+    t.integer  "sub1_marks"
+    t.string   "sub2"
+    t.integer  "sub2_marks"
+    t.string   "sub3"
+    t.integer  "sub3_marks"
+    t.string   "sub4"
+    t.integer  "sub4_marks"
+    t.string   "sub5"
+    t.integer  "sub5_marks"
+    t.string   "sub6"
+    t.integer  "sub6_marks"
+    t.string   "sub7"
+    t.integer  "sub7_marks"
+    t.string   "sub8"
+    t.integer  "sub8_marks"
+    t.string   "sub9"
+    t.integer  "sub9_marks"
+    t.string   "sub10"
+    t.integer  "sub10_marks"
+    t.string   "subject_streams_id"
   end
 
   add_index "academics", ["user_id"], name: "index_academics_on_user_id", unique: true, using: :btree
@@ -105,6 +126,15 @@ ActiveRecord::Schema.define(version: 20140709142401) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "seats"
+    t.integer  "subject_stream_id"
+  end
+
+  add_index "streams", ["subject_stream_id"], name: "index_streams_on_subject_stream_id", using: :btree
+
+  create_table "subject_streams", force: true do |t|
+    t.string   "subject_stream"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
