@@ -143,24 +143,28 @@
     <% end %>
   </div>
   <div id="tabs-4">
-    <!-- This portion needs to be refactored since violation of mvc -->
-    <% if @user.application %>
-      <h4>Application no <%= @user.application.id %> <%= Stream.find(@user.application.stream_id).stream %></h4>
-    <% else %>
-    <h4>Click on the subject you like opt</h4>
-       <% @streams.each do |s| %>
-        <% if @user.academic &&  @user.personal &&
-          @user.academic.hs_marks_percent >= Cutoff.find_by(category_id: @user.personal.category_id, stream_id: s.id).cutoff_marks %>
-          <%= form_for([@user, Application.new]) do |f| %>
-              <%= f.hidden_field :user_id, :value => @user.id %>
-              <%= f.hidden_field :stream_id, :value => s.id %>
-              <%= f.submit s.stream , data: {confirm: "Are you sure application once submitted cant be modified ?"}%>
-         <% end%>
+    <% begin %>
+      <!-- This portion needs to be refactored since violation of mvc -->
+      <% if @user.application %>
+        <h4>Application no <%= @user.application.id %> <%= Stream.find(@user.application.stream_id).stream %></h4>
+      <% else %>
+      <h4>Click on the subject you like opt</h4>
+         <% @streams.each do |s| %>
+          <% if @user.academic &&  @user.personal &&
+            @user.academic.hs_marks_percent >= Cutoff.find_by(category_id: @user.personal.category_id, stream_id: s.id).cutoff_marks %>
+            <%= form_for([@user, Application.new]) do |f| %>
+                <%= f.hidden_field :user_id, :value => @user.id %>
+                <%= f.hidden_field :stream_id, :value => s.id %>
+                <%= f.submit s.stream , data: {confirm: "Are you sure application once submitted cant be modified ?"}%>
+           <% end%>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-    <% if Rank.exists? %>
-      <p>Results deeclared <%= link_to "results", streams_path %></p>
-    <% end %>
+      <% if Rank.exists? %>
+        <p>Results deeclared <%= link_to "results", streams_path %></p>
+      <% end %>
+      <% rescue => e %>
+        <% "Error occured #{e}" %>
+      <% end %>
     </div>
 </div>
