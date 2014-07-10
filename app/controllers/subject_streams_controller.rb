@@ -1,4 +1,7 @@
 class SubjectStreamsController < ApplicationController
+  # this below line validates that admins can only set subject_streams
+  # admin_signin_status is present in application_helper.rb
+  before_action :admin_signin_status, only: [:index, :show, :edit, :new, :destroy]
   before_action :set_subject_stream, only: [:show, :edit, :update, :destroy]
 
   # GET /subject_streams
