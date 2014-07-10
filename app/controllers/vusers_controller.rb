@@ -6,11 +6,12 @@ class VusersController < ApplicationController
   # get 'user_dashboard/verify'
   # This is the location from where verfier should verfy candidates documents
   def verify
-    @users = User.paginate(:page => params[:page], :per_page => 20)
+    @users = User.paginate(:page => params[:page])
     @user = params[:search].to_i if params[:search]
     if params[:appid] && params[:verified]
        appli = Application.find(params[:appid])
        appli.update(verified: params[:verified] )
     end
   end
+  
 end
