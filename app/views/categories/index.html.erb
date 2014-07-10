@@ -1,0 +1,12 @@
+<div class="center body-unit">
+  <h1>Listing Categories</h1>
+  <p>
+    <% @categories.each do |category| %>
+      <p><b>Category:</b> <%= category.category %><p>
+      <p><%= link_to "edit", edit_category_path(category) %>
+      <%= link_to "Delete", category, method: :delete, data: {confirm: "Are you sure to delete ?"} %></p>
+    <% end %>
+  </p>
+  <%= link_to "New", new_category_path %>
+
+</div>

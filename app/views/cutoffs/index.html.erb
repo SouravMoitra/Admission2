@@ -1,0 +1,24 @@
+<div class="center body-unit">
+  <h1>Listing cutoffs</h1>
+  <table>
+      <tr>
+        <th>Stream</th>
+        <th>Category</th>
+        <th>Cut off</th>
+      </tr>
+      <% begin %>
+        <% @cutoffs.each do |cutoff| %>
+        <tr>
+          <td><%= Stream.find(cutoff.stream_id).stream %></td>
+          <td><%= Category.find(cutoff.category_id).category %></td>
+          <td><%= cutoff.cutoff_marks %></td>
+          <td><%= link_to "Delete", cutoff, method: :delete, data: {confirm: "Are you sure to delete ?"} %></td>
+        </tr>
+        <% end %>
+      <% rescue Exception %>
+        <p>Some error occured</p>
+      <% end %>
+  </table>
+  <%= link_to "New", new_cutoff_path %>
+
+</div>

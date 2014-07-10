@@ -1,0 +1,28 @@
+<%= form_for(@cutoff) do |f| %>
+  <% if @cutoff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cutoff.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% @cutoff.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :stream_id %><br>
+    <%= f.number_field :stream_id %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br>
+    <%= f.number_field :category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cutoff_marks %><br>
+    <%= f.number_field :cutoff_marks %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

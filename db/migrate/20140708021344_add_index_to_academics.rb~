@@ -1,0 +1,4 @@
+class AddIndexToAcademics < ActiveRecord::Migration
+  def change
+  end
+end

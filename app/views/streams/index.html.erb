@@ -1,0 +1,27 @@
+<div class="body-unit">
+  <h1>Listing streams</h1>
+  <table class="streams-table">
+    <thead>
+      <tr>
+        <th>Stream</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @streams.each do |stream| %>
+        <tr>
+          <td><%= link_to stream.stream, stream %></td>
+          <td></td>
+          <% if user_signed_in? && is_admin? %>
+            <td><%= link_to 'Edit', edit_stream_path(stream) %></td>
+            <td><%= link_to 'Destroy', stream, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% if user_signed_in? && is_admin? %>
+    <%= link_to "New stream", new_stream_path %>
+  <% end %>
+  <br>
+</div>

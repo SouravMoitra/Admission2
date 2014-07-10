@@ -1,0 +1,159 @@
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+.body-unit {
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid blue;
+  border-radius: 15px;
+  padding: 5px;
+  overflow: auto;
+  margin-bottom: 50px;
+}
+
+/* devise captcha */
+
+.captcha-custom {
+  margin: 0 auto;
+  margin-left: 42%;
+}
+/* home.html.erb */
+
+#tabs-1 {
+  border: 1px solid yellow;
+  background-color: #CCFF66;
+  padding: 5px;
+  border-radius: 15px;
+  text-transform:capitalize;
+  font-size: 1.5em;
+}
+
+#tabs-1 h1, #tabs-2 h2 {
+  text-align: center;
+}
+
+#tabs-2 img {
+    float: right;
+    border: 1px solid black;
+}
+#tabs-2, #tabs-3, #tabs-4 {
+  width: 503px;
+  float: left;
+  border-radius: 15px;
+  padding: 5px;
+  border: 1px solid yellow;
+  margin: 5px 5px 0 0;
+  text-transform:capitalize;
+  line-height: 2em;
+  height-minimum: 370px;
+  input[type=text], input[type=number] {
+    width: 70%;
+    border: 2px solid #66CCFF;
+    border-radius: 4px;
+  }
+}
+#tabs-4 {
+  float: center;
+  width: 100%;
+  margin-bottom: 5px;
+  height: auto;
+}
+
+/* streams show.html.erb */
+
+.subject-header {
+  border: 1px solid yellow;
+  background-color: #CCFF66;
+  padding: 5px;
+  border-radius: 15px;
+  text-transform:capitalize;
+  font-size: 2em;
+  text-align: center;
+}
+
+.result-box h3 {
+  text-align: center;
+  text-transform:capitalize;
+  font-size: 1.5em;
+}
+
+.result-box table {
+  margin: 0 auto;
+  text-align:center;
+  border: 1px solid black;
+  line-height: 1.5em;
+  font-size: 1.2em;
+  th {
+    background-color: #FF9900;
+  }
+  td, th {
+    width: 200px;
+  }
+}
+
+/* verify.html.erb */
+#tabs-2 table {
+  margin: 0 auto;
+  text-align:center;
+  font-size: 1em;
+  th {
+    background-color: #FF66CC;
+  }
+  td, th {
+    width: 50px;
+    border: 1px solid #990000;
+  }
+}
+
+/* alert */
+.alert {
+  text-align: center;
+  margin: 0 auto;
+  color: #CC0000;
+  display: block;
+  font-size: 1em;
+}
+ /* notice */
+.notice {
+  text-align: center;
+  margin: 0 auto;
+  color: #008A00;
+  display: block;
+  font-size: 1em;
+}
+
+/* streams index.html.erb */
+
+.streams-table {
+  border: 1px solid green;
+  th, td {
+    width: 200px;
+    font-size: 1em;
+    text-transform:uppercase;
+    line-height: 2em;
+    text-align: center;
+  }
+  margin: 0 auto;
+}

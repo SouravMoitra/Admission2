@@ -1,0 +1,166 @@
+<div class="body-unit">
+  <div id="tabs-1">
+      <h1>User Information</h1>
+      <b>ID : </b><%= @user.id %><br>
+      <b>email : </b><%= @user.email %><br>
+      <b>created at : </b><%= @user.created_at %><br>
+  </div>
+  <div id="tabs-2">
+      <% if @user.personal %>
+      <h2>Personal Details</h2>
+      <div class="image"><%= image_tag (@user.personal.avatar_url(:thumb))if @user.personal.avatar? %></div>
+      <b>First Name</b>:  <%= @user.personal.first_name %><br>
+      <b>Middle Name</b>:  <%= @user.personal.middle_name %><br>
+      <b>Last Name</b>:  <%= @user.personal.last_name %><br>
+      <b>Date of Birth</b> <%= @user.personal.date_of_birth %><br>
+      <b>Gender</b>:  <%= @user.personal.gender %><br>
+      <b>Category</b> <%= Category.find(@user.personal.category_id).category %><br>
+      <b>Blood Group</b>:  <%= @user.personal.blood_group %><br>
+      <b>Fathers_name</b>:  <%= @user.personal.fathers_name %><br>
+      <b>Mothers_name</b>:  <%= @user.personal.mothers_name %><br>
+      <% else %>
+        <%= form_for([@user, Personal.new]) do |f| %>
+          <% if @user.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this candidate from being saved:</h2>
+              <ul>
+              <% @user.personal.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+  	     <p>
+                <%= f.label :first_name  %><br/>
+                <%= f.text_field :first_name %>
+        </p>
+  	    <p>
+                <%= f.label :middle_name  %><br/>
+                <%= f.text_field :middle_name %>
+        </p>
+  	    <p>
+                <%= f.label :last_name  %><br/>
+                <%= f.text_field :last_name %>
+        </p>
+        <p>
+                <%= f.label :date_of_birth, "Date of Birth" %><br/>
+                <%= f.date_select :date_of_birth, start_year: 1985, end_year: 1999  %>
+        </p>
+        <p>
+                <%= f.label :gender %><br/>
+                <%= f.select :gender, options_for_select(%w[M F O]) %>
+        </p>
+        <p>
+                <%= f.label :blood_group %><br/>
+                <%= f.select :blood_group, options_for_select(%w[AB A+ B+ O ]) %>
+        </p>
+        <p>
+                <%= f.label :fathers_name %><br/>
+                <%= f.text_field :fathers_name %>
+        </p>
+        <p>
+                <%= f.label :mothers_name  %><br/>
+                <%= f.text_field :mothers_name %>
+        </p>
+        <p>
+                <%= f.label :category_id %></br>
+                <%= select("personal", "category_id", Category.all.collect {|c| [c.category, c.id]}) %>
+        </p>
+
+        <p>
+                <%= f.label :avatar %>
+                <%= f.file_field :avatar %>
+        </p>
+        <p><%= f.submit "Submit", data: {confirm: "Are you sure information once submitted cant be modified ?"} %></p>
+        <% end %>
+    <% end %>
+  </div>
+  <div id="tabs-3">
+   <% if @user.academic %>
+   <h2>Academic Details</h2>
+   <h4>10th Details </h4>
+   <b>Roll No</b> <%= @user.academic.tenth_roll %><br>
+   <b>Year of passing </b> <%= @user.academic.tenth_year_pass %><br>
+   <b>Board </b> <%= @user.academic.tenth_board %><br>
+   <b>Marks Percentage </b> <%= @user.academic.tenth_marks_percent %><br>
+   <h4>12th Details </h4>
+   <b>Roll No</b> <%= @user.academic.hs_roll %><br>
+   <b>Year of passing </b> <%= @user.academic.hs_year_pass %><br>
+   <b>Board </b> <%= @user.academic.hs_board %><br>
+   <b>Marks Percentage </b> <%= @user.academic.hs_marks_percent %><br>
+   <% else %>
+     <% begin %>
+     <h4>Fill up your academic details</h4>
+     <%= form_for([@user, Academic.new]) do |f| %>
+      <% if @user.errors.any? %>
+         <div id="error_explanation">
+           <h2><%= pluralize(@user.errors.count, "error") %> prohibited this candidate from being saved:</h2>
+           <ul>
+           <% @user.errors.full_messages.each do |message| %>
+             <li><%= message %></li>
+           <% end %>
+           </ul>
+         </div>
+        <% end %>
+        <p>
+                <%= f.label :tenth_roll %><br>
+                <%= f.number_field :tenth_roll %>
+        </p>
+        <p>
+                <%= f.label :tenth_board  %><br/>
+                <%= f.text_field :tenth_board %>
+        </p>
+        <p>
+                <%= f.label :tenth_year_pass %><br/>
+                <%= f.text_field :tenth_year_pass %>
+        </p>
+        <p>
+                <%= f.label :tenth_marks_percent  %><br/>
+                <%= f.number_field :tenth_marks_percent %>
+        </p>
+        <p>
+                <%= f.label :hs_roll %><br>
+                <%= f.number_field :hs_roll %>
+        </p>
+        <p>
+                <%= f.label :hs_board  %><br/>
+                <%= f.text_field :hs_board %>
+        </p>
+        <p>
+                <%= f.label :hs_year_pass %><br/>
+                <%= f.text_field :hs_year_pass %>
+        </p>
+        <p>
+                <%= f.label :hs_marks_percent  %><br/>
+                <%= f.number_field :hs_marks_percent %>
+        </p>
+
+        <p><%= f.submit "Submit", data: {confirm: "Are you sure information once submitted cant be modified ?"} %></p>
+      <% end %>
+        <% rescue Exception %>
+          <p>Some error</p>
+        <% end %>
+    <% end %>
+  </div>
+  <div id="tabs-4">
+    <!-- This portion needs to be refactored since violation of mvc -->
+    <% if @user.application %>
+      <h4>Application no <%= @user.application.id %> <%= Stream.find(@user.application.stream_id).stream %></h4>
+    <% else %>
+    <h4>Click on the subject you like opt</h4>
+       <% @streams.each do |s| %>
+        <% if @user.academic &&  @user.personal &&
+          @user.academic.hs_marks_percent >= Cutoff.find_by(category_id: @user.personal.category_id, stream_id: s.id).cutoff_marks %>
+          <%= form_for([@user, Application.new]) do |f| %>
+              <%= f.hidden_field :user_id, :value => @user.id %>
+              <%= f.hidden_field :stream_id, :value => s.id %>
+              <%= f.submit s.stream , data: {confirm: "Are you sure application once submitted cant be modified ?"}%>
+         <% end%>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if Rank.exists? %>
+      <p>Results deeclared <%= link_to "results", streams_path %></p>
+    <% end %>
+    </div>
+</div>

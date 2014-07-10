@@ -1,0 +1,4 @@
+class AddIndexToCutoffs < ActiveRecord::Migration
+  def change
+  end
+end

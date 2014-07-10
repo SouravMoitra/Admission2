@@ -1,0 +1,86 @@
+<div class="body-unit">
+  <div class="subject-header">
+      <strong>Subject: <%= @stream.stream %><strong>
+  </div>
+  </p>
+  <% if Rank.exists? %>
+  <div class="result-box">
+    <h3>General</h3>
+      <table border="1">
+        <tr>
+          <th>Sr</th>
+          <th>User id</th>
+          <th>Rank</th>
+        </tr>
+        <% i = 1 %>
+        <% @gens.each_with_index do |rank| %>
+          <tr>
+            <td id="rf"><%= i  %></td>
+            <td id="rf"><%= rank[0]  %></td>
+            <td id="rf"><%= rank[1]%></td>
+            <% i += 1 %>
+          <tr><br>
+      <% end %>
+      </table>
+  </div>
+  <div class="result-box">
+    <h3>ST</h3>
+      <table border="1">
+        <tr>
+          <th>Sr</th>
+          <th>User id</th>
+          <th>Rank</th>
+        </tr>
+        <% i = 1 %>
+        <% @sts.each_with_index do |rank| %>
+        <tr>
+          <td id="rf"><%= i  %></td>
+          <td id="rf"><%= rank[0]  %></td>
+          <td id="rf"><%= rank[1]%></td>
+          <% i += 1 %>
+        <tr><br>
+      <% end %>
+      </table>
+  </div>
+  <div class="result-box">
+    <h3>SC</h3>
+      <table border="1">
+        <tr>
+          <th>Sr</th>
+          <th>User id</th>
+          <th>Rank</th>
+        </tr>
+        <% i = 1 %>
+        <% @scs.each_with_index do |rank| %>
+        <tr>
+          <td id="rf"><%= i  %></td>
+          <td id="rf"><%= rank[0]  %></td>
+          <td id="rf"><%= rank[1]%></td>
+          <% i += 1 %>
+        <tr><br>
+      <% end %>
+      </table>
+  </div>
+  <div class="result-box">
+    <h3>OBC</h3>
+      <table border="1">
+        <tr>
+          <th>Sr</th>
+          <th>User id</th>
+          <th>Rank</th>
+        </tr>
+        <% i = 1 %>
+        <% @obcs.each_with_index do |rank| %>
+        <tr>
+          <td id="rf"><%= i  %></td>
+          <td id="rf"><%= rank[0]  %></td>
+          <td id="rf"><%= rank[1]%></td>
+          <% i += 1 %>
+        <tr><br>
+      <% end %>
+      </table>
+  </div>
+  <% else %>
+   <h2>Result Not Declared yet</h3>
+  <% end %>
+</div>
