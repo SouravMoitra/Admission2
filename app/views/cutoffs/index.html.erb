@@ -15,8 +15,8 @@
           <td><%= link_to "Delete", cutoff, method: :delete, data: {confirm: "Are you sure to delete ?"} %></td>
         </tr>
         <% end %>
-      <% rescue Exception %>
-        <p>Some error occured</p>
+      <% rescue => e %>
+        <%= "Error occured #{e}">
       <% end %>
   </table>
   <%= link_to "New", new_cutoff_path %>

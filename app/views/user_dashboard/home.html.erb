@@ -137,8 +137,8 @@
 
         <p><%= f.submit "Submit", data: {confirm: "Are you sure information once submitted cant be modified ?"} %></p>
       <% end %>
-        <% rescue Exception %>
-          <p>Some error</p>
+        <% rescue => e %>
+          <%= "Error #{e}" %>
         <% end %>
     <% end %>
   </div>
