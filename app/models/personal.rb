@@ -5,7 +5,7 @@ class Personal < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   # validations
   validates :first_name, presence: true, length: { maximum: 24}
-  validates :middle_name, presence: true, length: { maximum: 24}
+  validates :middle_name, length: { maximum: 24}
   validates :last_name, presence: true, length: { maximum: 24}
   validates :date_of_birth, presence: true
   validates :gender, presence: true, length: { maximum: 1}
