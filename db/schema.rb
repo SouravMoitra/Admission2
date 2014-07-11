@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710195406) do
+ActiveRecord::Schema.define(version: 20140711044706) do
 
   create_table "academics", force: true do |t|
     t.integer  "user_id"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20140710195406) do
     t.integer  "sub9_marks"
     t.string   "sub10"
     t.integer  "sub10_marks"
-    t.string   "subject_streams_id"
+    t.integer  "subject_streams_id"
   end
 
   add_index "academics", ["user_id"], name: "index_academics_on_user_id", unique: true, using: :btree
