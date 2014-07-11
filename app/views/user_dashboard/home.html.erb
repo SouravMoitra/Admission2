@@ -224,7 +224,7 @@
           <h4>Application no <%= @user.application.id %> <%= Stream.find(@user.application.stream_id).stream %></h4>
         <% else %>
           <h4>Click on the subject you like opt</h4>
-           <% @streams.each do |s| %>
+           <% @streams.where(subject_stream_id: @user.academic.subject_streams_id).each do |s| %>
              <% if @user.academic &&  @user.personal &&
               @user.academic.hs_marks_percent >= Cutoff.find_by(category_id: @user.personal.category_id, stream_id: s.id).cutoff_marks %>
                <%= form_for([@user, Application.new]) do |f| %>
