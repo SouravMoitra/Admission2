@@ -12,6 +12,7 @@
          <% begin %>
            <% searched_user = User.find(@user) %>
            <h2>search result</h2> <br>
+             <div class="image"><%= image_tag (searched_user.personal.avatar_url(:thumb))if searched_user.personal.avatar? %></div>
              <p><b>First Name:</b> <%= searched_user.personal.first_name %></p>
              <p><b>Middle Name:</b> <%= searched_user.personal.middle_name %></p>
              <p><b>Last Name:</b> <%= searched_user.personal.last_name %></p>
@@ -22,6 +23,16 @@
              <p><b>HS Marks:</b> <%= searched_user.academic.hs_marks_percent %></p>
              <p><b>HS year:</b> <%= searched_user.academic.hs_year_pass %></p>
              <p><b>HS board:</b> <%= searched_user.academic.hs_board %></p>
+             <b><%= searched_user.academic.sub1 %></b> <%= searched_user.academic.sub1_marks %><br>
+             <b><%= searched_user.academic.sub2 %></b> <%= searched_user.academic.sub2_marks %><br>
+             <b><%= searched_user.academic.sub3 %></b> <%= searched_user.academic.sub3_marks %><br>
+             <b><%= searched_user.academic.sub4 %></b> <%= searched_user.academic.sub4_marks %><br>
+             <b><%= searched_user.academic.sub5 %></b> <%= searched_user.academic.sub5_marks %><br>
+             <b><%= searched_user.academic.sub6 %></b> <%= searched_user.academic.sub6_marks %><br>
+             <b><%= searched_user.academic.sub7 %></b> <%= searched_user.academic.sub7_marks %><br>
+             <b><%= searched_user.academic.sub8 %></b> <%= searched_user.academic.sub8_marks %><br>
+             <b><%= searched_user.academic.sub9 %></b> <%= searched_user.academic.sub9_marks %><br>
+             <b><%= searched_user.academic.sub10 %></b> <%= searched_user.academic.sub10_marks %><br>
              <% a = searched_user.application %>
                <p>Application: <%= a.id %> <%= Stream.find(a.stream_id).stream %></p>
                <% if a.verified %>
