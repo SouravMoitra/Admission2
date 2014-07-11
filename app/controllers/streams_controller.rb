@@ -82,6 +82,6 @@ class StreamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stream_params
-      params.require(:stream).permit(:stream, :seats, :subject_streams_id)
+      params.require(:stream).permit(:stream, :seats, :subject_stream_id)
     end
 end
