@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711044706) do
+ActiveRecord::Schema.define(version: 20140711052612) do
 
   create_table "academics", force: true do |t|
     t.integer  "user_id"

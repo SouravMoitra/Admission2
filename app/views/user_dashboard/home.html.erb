@@ -225,7 +225,7 @@
         <% else %>
           <h4>Click on the subject you like opt</h4>
            <% @streams.each do |s| %>
-            <% if @user.academic &&  @user.personal && @user.academic.subject_streams_id.to_i == s.subject_stream_id.to_i &&
+            <% if @user.academic &&  @user.personal && @user.academic.subject_streams_id == s.subject_stream_id&&
               @user.academic.hs_marks_percent >= Cutoff.find_by(category_id: @user.personal.category_id, stream_id: s.id).cutoff_marks %>
               <%= form_for([@user, Application.new]) do |f| %>
                   <%= f.hidden_field :user_id, :value => @user.id %>
