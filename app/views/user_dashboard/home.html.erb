@@ -149,6 +149,7 @@
                   <%= select("academic", "subject_streams_id", SubjectStream.all.collect {|c| [c.subject_stream, c.id]}) %>
 
           </p>
+          <p> Subject 1 - 8 compulsory </p>
           <p>
                   <%= f.label "Subject 1"   %><br>
                   <%= f.text_field :sub1 , class: "sub-input" %><br>
