@@ -4,6 +4,9 @@
         <b>ID : </b><%= @user.id %><br>
         <b>email : </b><%= @user.email %><br>
         <b>created at : </b><%= @user.created_at %><br>
+        <% if @user.personal && @user.academic %>
+          <a href="javascript:window.print()">print</a>
+        <% end %>
     </div>
     <div id="tabs-2">
         <% if @user.personal %>
