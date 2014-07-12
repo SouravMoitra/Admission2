@@ -59,7 +59,7 @@ textarea {
     border: 1px solid black;
 }
 #tabs-2, #tabs-3, #tabs-4 {
-  width: 503px;
+  width: 49%;
   float: left;
   border-radius: 15px;
   padding: 5px;
@@ -69,10 +69,11 @@ textarea {
   line-height: 2em;
   height-minimum: 370px;
   input[type=text], input[type=number] {
-    width: 70%;
+    width: 80%;
     border: 2px solid #66CCFF;
     border-radius: 4px;
   }
+  text-align: center;
 }
 #tabs-4 {
   float: center;
@@ -160,4 +161,23 @@ textarea {
     text-align: center;
   }
   margin: 0 auto;
+}
+
+/* media queries for mobile view */
+
+@media screen and (max-device-width: 758px) {
+  #tabs-2, #tabs-3, #tabs-4 {
+    width: 100%;
+    font-size: 1.2em;
+  }
+}
+
+/* media queries for print */
+
+@media print {
+  #tabs-2, #tabs-3, #tabs-4 {
+    width: 100%;
+    border-radius: 0;
+    text-align: left;
+  }
 }
