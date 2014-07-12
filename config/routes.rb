@@ -27,8 +27,6 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}, :path => 'accounts'
   # users has personal academics and applications hence nested routes
   resources :users do
-    #resources :personals
-    #resources :academics
     resources :applications
   end
 
