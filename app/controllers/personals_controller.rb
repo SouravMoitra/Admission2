@@ -5,9 +5,13 @@ class PersonalsController < ApplicationController
 
   # This helps to create personals
   def create
-   @user = current_user
-   @personal = @user.create_personal(personal_params)
-   redirect_to home_path
+     @user = current_user
+     @personal = @user.build_personal(personal_params)
+     if @personal.save
+       redirect_to home_path
+     else
+       render 'user_dashboard/home'
+     end
   end
 
 

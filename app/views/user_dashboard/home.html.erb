@@ -22,17 +22,7 @@
         <b>Fathers_name</b>:  <%= @user.personal.fathers_name %><br>
         <b>Mothers_name</b>:  <%= @user.personal.mothers_name %><br>
         <% else %>
-          <%= form_for([@user, Personal.new]) do |f| %>
-            <% if @user.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= pluralize(@user.errors.count, "error") %> prohibited this candidate from being saved:</h2>
-                <ul>
-                <% @user.personal.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-                </ul>
-              </div>
-            <% end %>
+          <%= form_for @personal, url: user_dashboard_personal_creator_path, method: :post do |f| %>
     	     <p>
                   <%= f.label :first_name  %><br/>
                   <%= f.text_field :first_name %>

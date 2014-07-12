@@ -27,13 +27,13 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}, :path => 'accounts'
   # users has personal academics and applications hence nested routes
   resources :users do
-    resources :personals
+    #resources :personals
     resources :academics
     resources :applications
   end
 
   # user_dashboard controller
-  get 'user_dashboard/controlpanel'
+  post 'user_dashboard/personal_creator'
   # Controlpanel route
   get 'controlpanels/controlpanel'
   get 'controlpanels/resetranks'
