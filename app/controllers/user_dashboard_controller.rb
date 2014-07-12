@@ -15,9 +15,9 @@ class UserDashboardController < ApplicationController
      @user = current_user
      @personal = @user.build_personal(personal_params)
      if @personal.save
-       flash[:notice] = "Success"
+       flash[:notice] = "Successfully created your personal infromation"
      else
-       flash[:alert] = @personal.errors.full_messages.each{|e|}
+       flash[:alert] = "#{@personal.errors.count} Errors #{@personal.errors.full_messages.each{|e|}.to_s}"
      end
      redirect_to home_path
    end
