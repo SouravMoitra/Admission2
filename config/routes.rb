@@ -28,12 +28,13 @@ Rails.application.routes.draw do
   # users has personal academics and applications hence nested routes
   resources :users do
     #resources :personals
-    resources :academics
+    #resources :academics
     resources :applications
   end
 
   # user_dashboard controller
   post 'user_dashboard/personal_creator'
+  post 'user_dashboard/academic_creator'
   # Controlpanel route
   get 'controlpanels/controlpanel'
   get 'controlpanels/resetranks'

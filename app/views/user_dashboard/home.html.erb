@@ -104,7 +104,7 @@
      <% else %>
        <% begin %>
        <h4>Fill up your academic details</h4>
-       <%= form_for([@user, Academic.new]) do |f| %>
+       <%= form_for @academic, url: user_dashboard_academic_creator_path, method: :post do |f| %>
         <% if @user.errors.any? %>
            <div id="error_explanation">
              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this candidate from being saved:</h2>
@@ -157,61 +157,61 @@
                   <%= f.label "Subject 1"   %><br>
                   <%= f.text_field :sub1 , class: "sub-input" %><br>
                   <%= f.label "Subject 1 Marks"   %><br>
-                  <%= f.text_field :sub1_marks , class: "sub-input" %><br>
+                  <%= f.number_field :sub1_marks , class: "sub-input" %><br>
           </p>
           <p>
                   <%= f.label "Subject 2"   %><br>
                   <%= f.text_field :sub2 , class: "sub-input" %><br>
                   <%= f.label "Subject 2 Marks"   %><br>
-                  <%= f.text_field :sub2_marks , class: "sub-input" %><br>
+                  <%= f.number_field :sub2_marks , class: "sub-input" %><br>
           </p>
           <p>
                   <%= f.label "Subject 3"   %><br>
                   <%= f.text_field :sub3 , class: "sub-input" %><br>
                   <%= f.label "Subject 3 Marks"   %><br>
-                  <%= f.text_field :sub3_marks , class: "sub-input" %><br>
+                  <%= f.number_field :sub3_marks , class: "sub-input" %><br>
           </p>
           <p>
                   <%= f.label "Subject 4"   %><br>
                   <%= f.text_field :sub4 , class: "sub-input" %><br>
                   <%= f.label "Subject 4 Marks"   %><br>
-                  <%= f.text_field :sub4_marks , class: "sub-input" %><br>
+                  <%= f.number_field :sub4_marks , class: "sub-input" %><br>
           </p>
           <p>
                   <%= f.label "Subject 5"   %><br>
                   <%= f.text_field :sub5 , class: "sub-input" %><br>
                   <%= f.label "Subject 5 Marks"   %><br>
-                  <%= f.text_field :sub5_marks , class: "sub-input" %><br>
+                  <%= f.number_field :sub5_marks , class: "sub-input" %><br>
           </p>
           <p>
                   <%= f.label "Subject 6"   %><br>
                   <%= f.text_field :sub6 , class: "sub-input" %><br>
                   <%= f.label "Subject 6 Marks"   %><br>
-                  <%= f.text_field :sub6_marks , class: "sub-input" %><br>
+                  <%= f.number_field :sub6_marks , class: "sub-input" %><br>
           </p>
           <p>
                   <%= f.label "Subject 7"   %><br>
                   <%= f.text_field :sub7 , class: "sub-input" %><br>
                   <%= f.label "Subject 7 Marks"   %><br>
-                  <%= f.text_field :sub7_marks , class: "sub-input" %><br>
+                  <%= f.number_field :sub7_marks , class: "sub-input" %><br>
           </p>
           <p>
                   <%= f.label "Subject 8"   %><br>
                   <%= f.text_field :sub8 , class: "sub-input" %><br>
                   <%= f.label "Subject 8 Marks"   %><br>
-                  <%= f.text_field :sub8_marks , class: "sub-input" %><br>
+                  <%= f.number_field :sub8_marks , class: "sub-input" %><br>
           </p>
           <p>
                   <%= f.label "Subject 9"   %><br>
                   <%= f.text_field :sub9 , class: "sub-input" %><br>
                   <%= f.label "Subject 9 Marks"   %><br>
-                  <%= f.text_field :sub9_marks , class: "sub-input" %><br>
+                  <%= f.number_field :sub9_marks , class: "sub-input" %><br>
           </p>
           <p>
                   <%= f.label "Subject 10"   %><br>
                   <%= f.text_field :sub10 , class: "sub-input" %><br>
                   <%= f.label "Subject 10 Marks"   %><br>
-                  <%= f.text_field :sub10_marks , class: "sub-input" %><br>
+                  <%= f.number_field :sub10_marks , class: "sub-input" %><br>
           </p>
 
           <p><%= f.submit "Submit", data: {confirm: "Are you sure information once submitted cant be modified ?"} %></p>
