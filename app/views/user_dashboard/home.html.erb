@@ -2,6 +2,7 @@
     <div id="tabs-1">
         <h1>User Information</h1>
         <b>ID : </b><%= @user.id %><br>
+        <div class="image"><%= image_tag (@user.personal.avatar_url(:thumb)), class: "user-avatar" if @user.personal && @user.personal.avatar %></div>
         <b>email : </b><%= @user.email %><br>
         <b>created at : </b><%= @user.created_at %><br>
         <% if @user.personal && @user.academic %>
@@ -10,18 +11,22 @@
     </div>
     <div id="tabs-2">
         <% if @user.personal %>
-        <h2>Personal Details</h2>
-        <div class="image"><%= image_tag (@user.personal.avatar_url(:thumb))if @user.personal.avatar? %></div>
-        <b>First Name</b>:  <%= @user.personal.first_name %><br>
-        <b>Middle Name</b>:  <%= @user.personal.middle_name %><br>
-        <b>Last Name</b>:  <%= @user.personal.last_name %><br>
-        <b>Date of Birth</b> <%= @user.personal.date_of_birth %><br>
-        <b>Gender</b>:  <%= @user.personal.gender %><br>
-        <b>Category</b> <%= Category.find(@user.personal.category_id).category %><br>
-        <b>Blood Group</b>:  <%= @user.personal.blood_group %><br>
-        <b>Fathers_name</b>:  <%= @user.personal.fathers_name %><br>
-        <b>Mothers_name</b>:  <%= @user.personal.mothers_name %><br>
+        <table class="personal-view">
+          <tr>
+              <th colspan="2"><h2>Personal Details</h2></th>
+          </tr>
+          <tr><td><b>First Name</b></td><td><%= @user.personal.first_name %></td></tr>
+          <tr><td><b>Middle Name</b></td><td><%= @user.personal.middle_name %></td></tr>
+          <tr><td><b>Last Name</b></td><td><%= @user.personal.last_name %></td></tr>
+          <tr><td><b>Date of Birth</b></td><td><%= @user.personal.date_of_birth %></td></tr>
+          <tr><td><b>Gender</b></td><td><%= @user.personal.gender %></td></tr>
+          <tr><td><b>Category</b></td><td><%= Category.find(@user.personal.category_id).category %></td></tr>
+          <tr><td><b>Blood Group</b></td><td><%= @user.personal.blood_group %></td></tr>
+          <tr><td><b>Fathers_name</b></td><td><%= @user.personal.fathers_name %></td></tr>
+          <tr><td><b>Mothers_name</b></td><td><%= @user.personal.mothers_name %></td></tr>
+        </table>
         <% else %>
+          <h4>Fill up your personal details</h4>
           <%= form_for @personal, url: user_dashboard_personal_creator_path, method: :post do |f| %>
             <% if @personal.errors.any? %>
               <div id="error_explanation">
@@ -80,27 +85,31 @@
     </div>
     <div id="tabs-3">
      <% if @user.academic %>
-     <h2>Academic Details</h2>
-     <h4>10th Details </h4>
-     <b>Roll No</b> <%= @user.academic.tenth_roll %><br>
-     <b>Year of passing </b> <%= @user.academic.tenth_year_pass %><br>
-     <b>Board </b> <%= @user.academic.tenth_board %><br>
-     <b>Marks Percentage </b> <%= @user.academic.tenth_marks_percent %><br>
-     <h4>12th Details </h4>
-     <b>Roll No</b> <%= @user.academic.hs_roll %><br>
-     <b>Year of passing </b> <%= @user.academic.hs_year_pass %><br>
-     <b>Board </b> <%= @user.academic.hs_board %><br>
-     <b>Marks Percentage </b> <%= @user.academic.hs_marks_percent %><br>
-     <b><%= @user.academic.sub1 %></b> <%= @user.academic.sub1_marks %><br>
-     <b><%= @user.academic.sub2 %></b> <%= @user.academic.sub2_marks %><br>
-     <b><%= @user.academic.sub3 %></b> <%= @user.academic.sub3_marks %><br>
-     <b><%= @user.academic.sub4 %></b> <%= @user.academic.sub4_marks %><br>
-     <b><%= @user.academic.sub5 %></b> <%= @user.academic.sub5_marks %><br>
-     <b><%= @user.academic.sub6 %></b> <%= @user.academic.sub6_marks %><br>
-     <b><%= @user.academic.sub7 %></b> <%= @user.academic.sub7_marks %><br>
-     <b><%= @user.academic.sub8 %></b> <%= @user.academic.sub8_marks %><br>
-     <b><%= @user.academic.sub9 %></b> <%= @user.academic.sub9_marks %><br>
-     <b><%= @user.academic.sub10 %></b> <%= @user.academic.sub10_marks %><br>
+     <table>
+       <tr>
+         <th colspan="2"><h2>Academic Details</h2></th>
+       </tr>
+       <tr><td colspan="2"><h4>10th Details </h4></td></tr>
+       <tr><td><b>Roll No</b></td><td><%= @user.academic.tenth_roll %></td></tr>
+       <tr><td><b>Year of passing</b></td><td><%= @user.academic.tenth_year_pass %></td></tr>
+       <tr><td><b>Board</b></td><td><%= @user.academic.tenth_board %></td></tr>
+       <tr><td><b>Marks Percentage</b></td><td><%= @user.academic.tenth_marks_percent %></td></tr>
+       <tr><td colspan="2"><h4>12th Details </h4></td></tr>
+       <tr><td><b>Roll No</b></td><td><%= @user.academic.hs_roll %></td></tr>
+       <tr><td><b>Year of passing </b></td><td><%= @user.academic.hs_year_pass %></td></tr>
+       <tr><td><b>Board </b></td><td><%= @user.academic.hs_board %></td></tr>
+       <tr><td><b>Marks Percentage </b></td><td><%= @user.academic.hs_marks_percent %></td></tr>
+       <tr><td><b><%= @user.academic.sub1 %></b></td><td><%= @user.academic.sub1_marks %></td></tr>
+       <tr><td><b><%= @user.academic.sub2 %></b></td><td><%= @user.academic.sub2_marks %></td></tr>
+       <tr><td><b><%= @user.academic.sub3 %></b></td><td><%= @user.academic.sub3_marks %></td></tr>
+       <tr><td><b><%= @user.academic.sub4 %></b></td><td><%= @user.academic.sub4_marks %></td></tr>
+       <tr><td><b><%= @user.academic.sub5 %></b></td><td><%= @user.academic.sub5_marks %></td></tr>
+       <tr><td><b><%= @user.academic.sub6 %></b></td><td><%= @user.academic.sub6_marks %></td></tr>
+       <tr><td><b><%= @user.academic.sub7 %></b></td><td><%= @user.academic.sub7_marks %></td></tr>
+       <tr><td><b><%= @user.academic.sub8 %></b></td><td><%= @user.academic.sub8_marks %></td></tr>
+       <tr><td><b><%= @user.academic.sub9 %></b></td><td><%= @user.academic.sub9_marks %></td></tr>
+       <tr><td><b><%= @user.academic.sub10 %></b></td><td><%= @user.academic.sub10_marks %><br></td></tr>
+     </table>
      <% else %>
        <% begin %>
        <h4>Fill up your academic details</h4>
@@ -240,7 +249,7 @@
            <% end %>
         <% end %>
         <% if Rank.exists? %>
-          <p>Results deeclared <%= link_to "results", streams_path %></p>
+          <p>Results declared <%= link_to "results", streams_path %></p>
         <% end %>
         <% rescue => e %>
           <% "Error occured #{e}" %>
