@@ -23,6 +23,16 @@
         <b>Mothers_name</b>:  <%= @user.personal.mothers_name %><br>
         <% else %>
           <%= form_for @personal, url: user_dashboard_personal_creator_path, method: :post do |f| %>
+            <% if @personal.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@personal.errors.count, "error") %> prohibited this candidate from being saved:</h2>
+                <ul>
+                <% @personal.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
     	     <p>
                   <%= f.label :first_name  %><br/>
                   <%= f.text_field :first_name %>
