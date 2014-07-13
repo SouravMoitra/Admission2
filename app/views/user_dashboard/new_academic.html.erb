@@ -1,0 +1,120 @@
+<div class="body-unit">
+  <div id="tabs-2">
+    <h1>Fill up your academic details</h1>
+    <%= form_for @academic, url: user_dashboard_academic_creator_path, method: :post do |f| %>
+     <% if @academic.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@academic.errors.count, "error") %> prohibited this candidate from being saved:</h2>
+          <ul>
+          <% @academic.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+       <% end %>
+       <p>
+               <%= f.label :tenth_roll %><br>
+               <%= f.number_field :tenth_roll %>
+       </p>
+       <p>
+               <%= f.label :tenth_board  %><br/>
+               <%= f.text_field :tenth_board %>
+       </p>
+       <p>
+               <%= f.label :tenth_year_pass %><br/>
+               <%= f.text_field :tenth_year_pass %>
+       </p>
+       <p>
+               <%= f.label :tenth_marks_percent  %><br/>
+               <%= f.number_field :tenth_marks_percent %>
+       </p>
+       <p>
+               <%= f.label :hs_roll %><br>
+               <%= f.number_field :hs_roll %>
+       </p>
+       <p>
+               <%= f.label :hs_board  %><br/>
+               <%= f.text_field :hs_board %>
+       </p>
+       <p>
+               <%= f.label :hs_year_pass %><br/>
+               <%= f.text_field :hs_year_pass %>
+       </p>
+       <p>
+               <%= f.label :hs_marks_percent  %><br/>
+               <%= f.number_field :hs_marks_percent %>
+       </p>
+       <p>
+               <%= f.label "Stream" %>
+               <%= select("academic", "subject_streams_id", SubjectStream.all.collect {|c| [c.subject_stream, c.id]}) %>
+
+       </p>
+       <p> <h3>12th/Higher Secondary Subjects</h3><br>
+         Subject 1 - 8 compulsory </p>
+       <p>
+               <%= f.label "Subject 1"   %><br>
+               <%= f.text_field :sub1 , class: "sub-input" %><br>
+               <%= f.label "Subject 1 Marks"   %><br>
+               <%= f.number_field :sub1_marks , class: "sub-input" %><br>
+       </p>
+       <p>
+               <%= f.label "Subject 2"   %><br>
+               <%= f.text_field :sub2 , class: "sub-input" %><br>
+               <%= f.label "Subject 2 Marks"   %><br>
+               <%= f.number_field :sub2_marks , class: "sub-input" %><br>
+       </p>
+       </div>
+       <div id="tabs-3">
+       <p>
+               <%= f.label "Subject 3"   %><br>
+               <%= f.text_field :sub3 , class: "sub-input" %><br>
+               <%= f.label "Subject 3 Marks"   %><br>
+               <%= f.number_field :sub3_marks , class: "sub-input" %><br>
+       </p>
+       <p>
+               <%= f.label "Subject 4"   %><br>
+               <%= f.text_field :sub4 , class: "sub-input" %><br>
+               <%= f.label "Subject 4 Marks"   %><br>
+               <%= f.number_field :sub4_marks , class: "sub-input" %><br>
+       </p>
+       <p>
+               <%= f.label "Subject 5"   %><br>
+               <%= f.text_field :sub5 , class: "sub-input" %><br>
+               <%= f.label "Subject 5 Marks"   %><br>
+               <%= f.number_field :sub5_marks , class: "sub-input" %><br>
+       </p>
+       <p>
+               <%= f.label "Subject 6"   %><br>
+               <%= f.text_field :sub6 , class: "sub-input" %><br>
+               <%= f.label "Subject 6 Marks"   %><br>
+               <%= f.number_field :sub6_marks , class: "sub-input" %><br>
+       </p>
+       <p>
+               <%= f.label "Subject 7"   %><br>
+               <%= f.text_field :sub7 , class: "sub-input" %><br>
+               <%= f.label "Subject 7 Marks"   %><br>
+               <%= f.number_field :sub7_marks , class: "sub-input" %><br>
+       </p>
+       <p>
+               <%= f.label "Subject 8"   %><br>
+               <%= f.text_field :sub8 , class: "sub-input" %><br>
+               <%= f.label "Subject 8 Marks"   %><br>
+               <%= f.number_field :sub8_marks , class: "sub-input" %><br>
+       </p>
+       <p>
+               <%= f.label "Subject 9"   %><br>
+               <%= f.text_field :sub9 , class: "sub-input" %><br>
+               <%= f.label "Subject 9 Marks"   %><br>
+               <%= f.number_field :sub9_marks , class: "sub-input" %><br>
+       </p>
+       <p>
+               <%= f.label "Subject 10"   %><br>
+               <%= f.text_field :sub10 , class: "sub-input" %><br>
+               <%= f.label "Subject 10 Marks"   %><br>
+               <%= f.number_field :sub10_marks , class: "sub-input" %><br>
+       </p>
+
+       <p><%= f.submit "Submit", class: "btn btn-primary btn-lg", data: {confirm: "Are you sure information once submitted cant be modified ?"} %></p>
+     <% end %>
+   </div>
+</div>

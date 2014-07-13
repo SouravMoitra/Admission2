@@ -1,0 +1,59 @@
+<div class="body-unit">
+  <div class="form-new">
+    <h2>Fill up your personal Details</h2>
+    <%= form_for @personal, url: user_dashboard_personal_creator_path, method: :post do |f| %>
+      <% if @personal.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@personal.errors.count, "error") %> prohibited this candidate from being saved:</h2>
+          <ul>
+          <% @personal.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+     <p>
+            <%= f.label :first_name  %><br/>
+            <%= f.text_field :first_name %>
+    </p>
+    <p>
+            <%= f.label :middle_name  %><br/>
+            <%= f.text_field :middle_name %>
+    </p>
+    <p>
+            <%= f.label :last_name  %><br/>
+            <%= f.text_field :last_name %>
+    </p>
+    <p>
+            <%= f.label :date_of_birth, "Date of Birth" %><br/>
+            <%= f.date_select :date_of_birth, start_year: 1985, end_year: 1999  %>
+    </p>
+    <p>
+            <%= f.label :gender %><br/>
+            <%= f.select :gender, options_for_select(%w[M F O]) %>
+    </p>
+    <p>
+            <%= f.label :blood_group %><br/>
+            <%= f.select :blood_group, options_for_select(%w[AB A+ B+ O ]) %>
+    </p>
+    <p>
+            <%= f.label :fathers_name %><br/>
+            <%= f.text_field :fathers_name %>
+    </p>
+    <p>
+            <%= f.label :mothers_name  %><br/>
+            <%= f.text_field :mothers_name %>
+    </p>
+    <p>
+            <%= f.label :category_id %></br>
+            <%= select("personal", "category_id", Category.all.collect {|c| [c.category, c.id]}) %>
+    </p>
+
+    <p>
+            <%= f.label :avatar %>
+            <%= f.file_field :avatar, class: "file-field"%>
+    </p>
+    <p><%= f.submit "Submit", data: {confirm: "Are you sure information once submitted cant be modified ?"} %></p>
+    <% end %>
+  </div>
+</div>

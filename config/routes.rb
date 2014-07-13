@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   # user_dashboard controller
   post 'user_dashboard/personal_creator'
   post 'user_dashboard/academic_creator'
+  get 'user_dashboard/new_personal'
+  get 'user_dashboard/new_academic'
   # Controlpanel route
   get 'controlpanels/controlpanel'
   get 'controlpanels/resetranks'

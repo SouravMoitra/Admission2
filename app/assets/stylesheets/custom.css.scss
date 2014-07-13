@@ -39,6 +39,33 @@ textarea {
   margin: 0 auto;
   margin-left: 42%;
 }
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+
+.field_with_errors {
+  background-color: red;
+}
 /* home.html.erb */
 
 #tabs-1 {
@@ -69,15 +96,17 @@ textarea {
   text-transform:capitalize;
   line-height: 2em;
   min-height: 370px;
-  input[type=text], input[type=number] {
-    width: 80%;
-    border: 2px solid #66CCFF;
+  text-align: center;
+  input[type=text], input[type=number], input[type=file] {
+    width: 60%;
+    border: 1px solid #66CCFF;
     border-radius: 4px;
+    line-height: 2.2em;
+    padding: 2px;
   }
   input[type=text]:focus, input[type=number]:focus {
     background-color: #FFFF4D;
   }
-  text-align: center;
 }
 #tabs-4 {
   float: center;
@@ -87,8 +116,27 @@ textarea {
   min-height: 100px;
 }
 
+.form-new {
+  input[type=text], input[type=number], input[type=file] {
+    width: 60%;
+    border: 2px solid #66CCFF;
+    border-radius: 4px;
+  }
+  input[type=text]:focus, input[type=number]:focus {
+    background-color: #FFFF4D;
+  }
+  text-align: center;
+}
+.file-field {
+  margin-left: 20%;
+}
+
 .sub-input {
   width: 30%;
+}
+
+.email-id {
+  text-transform: lowercase;
 }
 
 /* streams show.html.erb */

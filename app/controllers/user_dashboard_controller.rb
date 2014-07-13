@@ -8,8 +8,10 @@ class UserDashboardController < ApplicationController
   def home
     @user = current_user
     @streams = Stream.all
+  end
+
+  def new_personal
     @personal = Personal.new
-    @academic = Academic.new
   end
 
   def personal_creator
@@ -17,10 +19,14 @@ class UserDashboardController < ApplicationController
      @personal = @user.build_personal(personal_params)
      if @personal.save
        flash[:notice] = "Successfully created your personal infromation"
+       redirect_to home_path
      else
-       flash[:alert] = "#{@personal.errors.count} Errors #{@personal.errors.full_messages.each{|e|}.to_s}"
+       render 'new_personal'
      end
-     redirect_to home_path
+   end
+
+   def new_academic
+     @academic = Academic.new
    end
 
    def academic_creator
@@ -34,10 +40,11 @@ class UserDashboardController < ApplicationController
      @academic.update(calculated_marks: calculated_marks)
      if @academic.save
        flash[:notice] = "Successfully created your academic infromation"
-     else
-       flash[:alert] = "#{@academic.errors.count} Errors #{@academic.errors.full_messages.each{|e|}.to_s}"
-     end
        redirect_to home_path
+     else
+       render 'new_academic'
+     end
+
    end
 
    private
