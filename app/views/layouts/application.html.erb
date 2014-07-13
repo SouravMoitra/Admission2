@@ -7,17 +7,17 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <!-- Latest compiled and minified  CSS BOOTSTRAP -->
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <!-- JQuery -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <!-- Latest compiled and minified JavaScript BOOTSTRAP -->
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'layouts/header' %>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+  <%= render 'layouts/header' %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
-<%= yield %>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <%= yield %>
+  <!-- JQuery -->
+  <script async src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript BOOTSTRAP -->
+  <script async src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 </html>
