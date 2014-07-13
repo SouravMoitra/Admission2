@@ -26,7 +26,7 @@
           <tr><td><b>Mothers_name</b></td><td><%= @user.personal.mothers_name %></td></tr>
         </table>
         <% else %>
-          <h4><%= link_to "Fill up your personal details", user_dashboard_new_personal_path %></h4>
+          <h4><%= link_to "Fill up your personal details", user_dashboard_new_personal_path, class: " btn-home btn btn-info" %></h4>
         <% end %>
     </div>
     <div id="tabs-3">
@@ -57,7 +57,7 @@
        <tr><td><b><%= @user.academic.sub10 %></b></td><td><%= @user.academic.sub10_marks %><br></td></tr>
      </table>
      <% else %>
-       <h4><%= link_to "Fill up your Academic details", user_dashboard_new_academic_path %></h4>
+       <h4><%= link_to "Fill up your Academic details", user_dashboard_new_academic_path, class: "btn-home btn btn-info" %></h4>
      <% end %>
     </div>
     <div id="tabs-4">

@@ -1,7 +1,7 @@
 <div class="body-unit">
   <div id="tabs-2">
     <h1>Fill up your academic details</h1>
-    <%= form_for @academic, url: user_dashboard_academic_creator_path, method: :post do |f| %>
+    <%= form_for @academic, url: user_dashboard_academic_creator_path , method: :post do |f| %>
      <% if @academic.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@academic.errors.count, "error") %> prohibited this candidate from being saved:</h2>
@@ -22,11 +22,11 @@
        </p>
        <p>
                <%= f.label :tenth_year_pass %><br/>
-               <%= f.text_field :tenth_year_pass %>
+               <%= f.number_field :tenth_year_pass %>
        </p>
        <p>
                <%= f.label :tenth_marks_percent  %><br/>
-               <%= f.number_field :tenth_marks_percent %>
+               <%= f.number_field :tenth_marks_percent, step: 'any' %>
        </p>
        <p>
                <%= f.label :hs_roll %><br>
@@ -38,11 +38,11 @@
        </p>
        <p>
                <%= f.label :hs_year_pass %><br/>
-               <%= f.text_field :hs_year_pass %>
+               <%= f.number_field :hs_year_pass %>
        </p>
        <p>
                <%= f.label :hs_marks_percent  %><br/>
-               <%= f.number_field :hs_marks_percent %>
+               <%= f.number_field :hs_marks_percent, step: 'any' %>
        </p>
        <p>
                <%= f.label "Stream" %>
@@ -114,7 +114,7 @@
                <%= f.number_field :sub10_marks , class: "sub-input" %><br>
        </p>
 
-       <p><%= f.submit "Submit", class: "btn btn-primary btn-lg" , data: { confirm: "Are you sure information once submitted cant be modified ?" } %></p>
+       <p><%= f.submit "Submit", onclick:  "return confirm('Are you sure data once submitted cant be changed?')", class: "btn btn-primary btn-lg"  %></p>
      <% end %>
    </div>
 </div>

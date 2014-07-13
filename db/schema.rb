@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711052612) do
+ActiveRecord::Schema.define(version: 20140713133617) do
 
   create_table "academics", force: true do |t|
     t.integer  "user_id"
-    t.integer  "tenth_roll",          default: 0
-    t.integer  "tenth_year_pass",     default: 2000
-    t.integer  "tenth_marks_percent", default: 40
+    t.integer  "tenth_roll",                                   default: 0
+    t.integer  "tenth_year_pass",                              default: 2000
+    t.decimal  "tenth_marks_percent", precision: 10, scale: 2, default: 40.0
     t.string   "tenth_board"
-    t.integer  "hs_roll",             default: 0
-    t.integer  "hs_year_pass",        default: 2002
-    t.integer  "hs_marks_percent",    default: 40
+    t.integer  "hs_roll",                                      default: 0
+    t.integer  "hs_year_pass",                                 default: 2002
+    t.decimal  "hs_marks_percent",    precision: 10, scale: 2, default: 40.0
     t.string   "hs_board"
     t.datetime "created_at"
     t.datetime "updated_at"
