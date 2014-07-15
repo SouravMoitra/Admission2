@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715102445) do
+ActiveRecord::Schema.define(version: 20140715104438) do
 
   create_table "academics", force: true do |t|
     t.integer  "user_id"
@@ -156,6 +156,16 @@ ActiveRecord::Schema.define(version: 20140715102445) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "academics", "users", name: "academics_user_id_fk"
+
+  add_foreign_key "applications", "users", name: "applications_user_id_fk"
+
+  add_foreign_key "cutoffs", "streams", name: "cutoffs_stream_id_fk"
+
   add_foreign_key "personals", "users", name: "personals_user_id_fk"
+
+  add_foreign_key "ranks", "users", name: "ranks_user_id_fk"
+
+  add_foreign_key "streams", "subject_streams", name: "streams_subject_stream_id_fk"
 
 end
