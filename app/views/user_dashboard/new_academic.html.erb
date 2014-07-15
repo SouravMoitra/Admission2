@@ -1,5 +1,5 @@
 <div class="body-unit">
-  <div id="tabs-2">
+  <div id="tabs-4">
     <h1>Fill up your academic details</h1>
     <%= form_for @academic, url: user_dashboard_academic_creator_path , method: :post do |f| %>
      <% if @academic.errors.any? %>
@@ -63,8 +63,6 @@
                <%= f.label "Subject 2 Marks"   %><br>
                <%= f.number_field :sub2_marks , class: "sub-input" %><br>
        </p>
-       </div>
-       <div id="tabs-3">
        <p>
                <%= f.label "Subject 3"   %><br>
                <%= f.text_field :sub3 , class: "sub-input" %><br>
