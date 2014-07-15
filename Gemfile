@@ -57,6 +57,7 @@ gem 'rmagick'
 gem 'simple_captcha2', require: 'simple_captcha'
 gem 'carrierwave'
 gem 'will_paginate'
+gem 'foreigner'
 
 
 group :test do
