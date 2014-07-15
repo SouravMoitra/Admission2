@@ -11,8 +11,8 @@ class SubjectStreamsController < ApplicationController
   end
 
   # GET /subject_streams/1
-  # GET /subject_streams/1.json
   def show
+    @subject_stream = SubjectStream.find(params[:id])
   end
 
   # GET /subject_streams/new
@@ -22,53 +22,44 @@ class SubjectStreamsController < ApplicationController
 
   # GET /subject_streams/1/edit
   def edit
+    @subject_stream = SubjectStream.find(params[:id])
   end
 
   # POST /subject_streams
-  # POST /subject_streams.json
   def create
     @subject_stream = SubjectStream.new(subject_stream_params)
 
     respond_to do |format|
       if @subject_stream.save
         format.html { redirect_to @subject_stream, notice: 'Subject stream was successfully created.' }
-        format.json { render :show, status: :created, location: @subject_stream }
       else
         format.html { render :new }
-        format.json { render json: @subject_stream.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /subject_streams/1
-  # PATCH/PUT /subject_streams/1.json
   def update
+    @subject_stream = SubjectStream.find(params[:id])
     respond_to do |format|
       if @subject_stream.update(subject_stream_params)
         format.html { redirect_to @subject_stream, notice: 'Subject stream was successfully updated.' }
-        format.json { render :show, status: :ok, location: @subject_stream }
       else
         format.html { render :edit }
-        format.json { render json: @subject_stream.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /subject_streams/1
-  # DELETE /subject_streams/1.json
   def destroy
+    @subject_stream = SubjectStream.find(params[:id])
     @subject_stream.destroy
     respond_to do |format|
       format.html { redirect_to subject_streams_url, notice: 'Subject stream was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_subject_stream
-      @subject_stream = SubjectStream.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_stream_params
